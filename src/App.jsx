@@ -11,6 +11,9 @@ const App = () => {
           <Link to="/tesla-cars">Tesla Cars</Link>
         </nav>
         <Routes>
+          <Route path="/" />
+        </Routes>
+        <Routes>
           <Route path="/tesla-cars" element={<TeslaCars />} />
         </Routes>
       </div>
