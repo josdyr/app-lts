@@ -1,25 +1,56 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-
-function Table({ value }) {
-  return <table className="table">Hi Table</table>;
-}
+import React, { useState, useEffect } from "react";
 
 function App() {
-  const [count, setCount] = useState(0);
+  // State to store the fetched cars
+  const [teslaCars, setTeslaCars] = useState([]);
+
+  // Function to fetch data from the API
+  const fetchData = async () => {
+    try {
+      const response = await fetch("http://localhost:5052/api/teslacar");
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setTeslaCars(data);
+    } catch (error) {
+      console.error("Error fetching data: ", error);
+    }
+  };
+
+  // useEffect to fetch data on component mount
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  // Function to render the HTML table
+  const renderTable = () => {
+    return teslaCars.map((car, index) => {
+      return (
+        <tr key={index}>
+          <td>{car.id}</td>
+          <td>{car.model}</td>
+          <td>{car.serialNumber}</td>
+          <td>{car.location}</td>
+        </tr>
+      );
+    });
+  };
 
   return (
-    <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <p>Hello World!</p>
-      </div>
-      <div className="table">
-        <Table />
-      </div>
-    </>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Model</th>
+            <th>Serial Number</th>
+            <th>Location</th>
+          </tr>
+        </thead>
+        <tbody>{renderTable()}</tbody>
+      </table>
+    </div>
   );
 }
 
