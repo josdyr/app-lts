@@ -5,7 +5,9 @@ const TeslaCars = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:5052/api/teslacar");
+      const response = await fetch(
+        "http://app-lts.azurewebsites.net/api/teslacar"
+      );
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
