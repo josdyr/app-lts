@@ -7,9 +7,6 @@ const App = () => {
   return (
     <Router>
       <div>
-        <nav>
-          <Link to="/tesla-cars">Tesla Cars</Link>
-        </nav>
         <Routes>
           <Route path="/" />
         </Routes>
