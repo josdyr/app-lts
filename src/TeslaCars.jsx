@@ -22,10 +22,14 @@ const TeslaCars = () => {
     fetchData();
   }, []);
 
+  function printHello(index) {
+    console.log("Hello " + index);
+  }
+
   const renderTable = () => {
     return teslaCars.map((car, index) => {
       return (
-        <tr key={index}>
+        <tr key={index} onClick={() => printHello(car.id)}>
           <td>{car.id}</td>
           <td>{car.model}</td>
           <td>{car.serialNumber}</td>
