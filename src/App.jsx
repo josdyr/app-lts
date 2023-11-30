@@ -8,9 +8,6 @@ const App = () => {
     <Router>
       <div>
         <Routes>
-          <Route path="/" />
-        </Routes>
-        <Routes>
           <Route path="/tesla-cars" element={<TeslaCars />} />
         </Routes>
       </div>
