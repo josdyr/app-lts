@@ -17,14 +17,13 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
-        <Route path="tesla-cars" element={<TeslaCars />}>
-          <Route path=":id" element={<ObjectDetail />} />
-        </Route>
+        <Route path="tesla-cars" element={<TeslaCars />} />
+        <Route path="tesla-cars/:id" element={<ObjectDetail />} />
         <Route path="create" element={<Create />} />
-        <Route path="users" element={<Users />}>
+        {/* <Route path="users" element={<Users />}>
           <Route path=":userId" element={<UserDetails />} />
           <Route path="admin" element={<Admin />} />
-        </Route>
+        </Route> */}
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </>

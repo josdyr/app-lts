@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const TeslaCars = () => {
   const [teslaCars, setTeslaCars] = useState([]);
@@ -31,7 +32,9 @@ const TeslaCars = () => {
     return teslaCars.map((car, index) => {
       return (
         <tr key={index} onClick={() => printHello(car.id)}>
-          <td>{car.id}</td>
+          <td>
+            <Link to={`/tesla-cars/${car.id}`}>{car.id}</Link>
+          </td>
           <td>{car.model}</td>
           <td>{car.serialNumber}</td>
           <td>{car.location}</td>
