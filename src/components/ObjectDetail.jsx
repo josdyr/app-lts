@@ -132,7 +132,6 @@ export const ObjectDetail = () => {
           <option value="Haugesund">Haugesund</option>
           <option value="Stavanger">Stavanger</option>
           <option value="Bergen">Bergen</option>
-          <option value=""></option>
         </select>
         <div className="valid-feedback"></div>
         <div className="invalid-feedback">Please fill out this field.</div>
