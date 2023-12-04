@@ -119,9 +119,6 @@ export const ObjectDetail = () => {
           onChange={handleChange}
           required
         >
-          <option selected value={teslaCar.location}>
-            {teslaCar.location}
-          </option>
           <option value="Haugesund">Haugesund</option>
           <option value="Stavanger">Stavanger</option>
           <option value="Bergen">Bergen</option>
