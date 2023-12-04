@@ -1,17 +1,10 @@
-<script src="http://localhost:8097"></script>;
-
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 export const ObjectDetail = () => {
   const params = useParams();
 
-  const [teslaCar, setTeslaCar] = useState({
-    id: "",
-    model: "",
-    serialNumber: "",
-    location: "",
-  });
+  const [teslaCar, setTeslaCar] = useState({});
 
   const fetchData = async () => {
     try {
@@ -28,6 +21,8 @@ export const ObjectDetail = () => {
     }
   };
 
+  console.log(teslaCar);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -36,19 +31,57 @@ export const ObjectDetail = () => {
     setTeslaCar({ ...teslaCar, [e.target.name]: e.target.value });
   };
 
-  console.log(teslaCar);
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent the default form submission
+
+    const payload = { ...teslaCar };
+
+    try {
+      let response = null;
+      if (teslaCar.id !== "") {
+        response = await fetch(
+          `http://app-lts.azurewebsites.net/api/teslacar/${teslaCar.id}`,
+          {
+            method: "PUT", // Use PUT for update
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          }
+        );
+        console.log("Update");
+      } else {
+        payload.id = 0;
+        response = await fetch(
+          "http://app-lts.azurewebsites.net/api/teslacar",
+          {
+            method: "POST", // Use POST for create
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          }
+        );
+        console.log("Create");
+      }
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
+  };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit} className="was-validated" noValidate>
       <div className="mb-3">
         <label className="form-label">ID:</label>
         <input
-          type="text"
+          type="number"
           name="id"
           defaultValue={teslaCar.id}
           className="form-control"
           onChange={handleChange}
         />
+        <div className="valid-feedback"></div>
+        <div className="invalid-feedback">Please fill out this field.</div>
       </div>
       <div className="mb-3">
         <label className="form-label">Model:</label>
@@ -58,7 +91,10 @@ export const ObjectDetail = () => {
           defaultValue={teslaCar.model}
           className="form-control"
           onChange={handleChange}
+          required
         />
+        <div className="valid-feedback"></div>
+        <div className="invalid-feedback">Please fill out this field.</div>
       </div>
       <div className="mb-3">
         <label className="form-label">Serial Number:</label>
@@ -68,17 +104,27 @@ export const ObjectDetail = () => {
           defaultValue={teslaCar.serialNumber}
           className="form-control"
           onChange={handleChange}
+          required
         />
+        <div className="valid-feedback"></div>
+        <div className="invalid-feedback">Please fill out this field.</div>
       </div>
       <div className="mb-3">
         <label className="form-label">Location:</label>
-        <input
+        <select
           type="text"
           name="location"
           defaultValue={teslaCar.location}
-          className="form-control"
+          className="form-select"
           onChange={handleChange}
-        />
+          required
+        >
+          <option value="1">Haugesund</option>
+          <option value="2">Stavanger</option>
+          <option value="3">Bergen</option>
+        </select>
+        <div className="valid-feedback"></div>
+        <div className="invalid-feedback">Please fill out this field.</div>
       </div>
       <button type="submit" className="btn btn-primary">
         Submit
