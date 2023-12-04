@@ -9,6 +9,7 @@ import { Users } from "./components/Users";
 import { UserDetails } from "./components/UserDetails";
 import { Admin } from "./components/Admin";
 import { Create } from "./components/Create";
+import { CreateNew } from "./components/CreateNew";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="about" element={<About />} />
         <Route path="tesla-cars" element={<TeslaCars />} />
         <Route path="tesla-cars/:id" element={<ObjectDetail />} />
+        <Route path="tesla-cars/create-new" element={<CreateNew />} />
         <Route path="create" element={<Create />} />
         {/* <Route path="users" element={<Users />}>
           <Route path=":userId" element={<UserDetails />} />
