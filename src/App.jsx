@@ -22,10 +22,6 @@ const App = () => {
         <Route path="tesla-cars/:id" element={<ObjectDetail />} />
         <Route path="tesla-cars/create-new" element={<CreateNew />} />
         <Route path="create" element={<Create />} />
-        {/* <Route path="users" element={<Users />}>
-          <Route path=":userId" element={<UserDetails />} />
-          <Route path="admin" element={<Admin />} />
-        </Route> */}
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </>
