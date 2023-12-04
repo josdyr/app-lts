@@ -119,9 +119,12 @@ export const ObjectDetail = () => {
           onChange={handleChange}
           required
         >
-          <option value="1">Haugesund</option>
-          <option value="2">Stavanger</option>
-          <option value="3">Bergen</option>
+          <option selected value={teslaCar.location}>
+            {teslaCar.location}
+          </option>
+          <option value="Haugesund">Haugesund</option>
+          <option value="Stavanger">Stavanger</option>
+          <option value="Bergen">Bergen</option>
         </select>
         <div className="valid-feedback"></div>
         <div className="invalid-feedback">Please fill out this field.</div>
