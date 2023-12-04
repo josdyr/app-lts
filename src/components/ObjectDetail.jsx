@@ -38,6 +38,16 @@ export const ObjectDetail = () => {
 
     try {
       let response = null;
+      if (Object.values(teslaCar).every((x) => x === "")) {
+        response = await fetch(
+          `http://app-lts.azurewebsites.net/api/teslacar/${params.id}`,
+          {
+            method: "DELETE",
+          }
+        );
+        console.log("Delete");
+        return;
+      }
       if (teslaCar.id !== "") {
         response = await fetch(
           `http://app-lts.azurewebsites.net/api/teslacar/${teslaCar.id}`,
@@ -122,6 +132,7 @@ export const ObjectDetail = () => {
           <option value="Haugesund">Haugesund</option>
           <option value="Stavanger">Stavanger</option>
           <option value="Bergen">Bergen</option>
+          <option value=""></option>
         </select>
         <div className="valid-feedback"></div>
         <div className="invalid-feedback">Please fill out this field.</div>
