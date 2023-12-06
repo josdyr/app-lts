@@ -1,5 +1,5 @@
 import React from "react";
 
 export const NoMatch = () => {
-  return <div>Page Not Found</div>;
+  return <div className="appContainer">Page Not Found</div>;
 };

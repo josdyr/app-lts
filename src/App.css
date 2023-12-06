@@ -6,7 +6,13 @@
 } */
 
 .appContainer {
-  padding: 20px;
+  margin: 15px;
+}
+
+/* all table elements */
+table {
+  border: 5px solid #dddddd55;
+  background-color: red;
 }
 
 .logo {
