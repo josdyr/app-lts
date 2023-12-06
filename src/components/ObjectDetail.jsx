@@ -9,10 +9,10 @@ export const ObjectDetail = () => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        `http://app-lts.azurewebsites.net/api/teslacar/${params.id}`
+        `https://app-lts.azurewebsites.net/api/teslacar/${params.id}`
       );
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`HTTPS error! status: ${response.status}`);
       }
       const data = await response.json();
       setTeslaCar(data);
@@ -40,7 +40,7 @@ export const ObjectDetail = () => {
       let response = null;
       if (Object.values(teslaCar).every((x) => x === "")) {
         response = await fetch(
-          `http://app-lts.azurewebsites.net/api/teslacar/${params.id}`,
+          `https://app-lts.azurewebsites.net/api/teslacar/${params.id}`,
           {
             method: "DELETE",
           }
@@ -50,7 +50,7 @@ export const ObjectDetail = () => {
       }
       if (teslaCar.id !== "") {
         response = await fetch(
-          `http://app-lts.azurewebsites.net/api/teslacar/${teslaCar.id}`,
+          `https://app-lts.azurewebsites.net/api/teslacar/${teslaCar.id}`,
           {
             method: "PUT", // Use PUT for update
             headers: { "Content-Type": "application/json" },
@@ -61,7 +61,7 @@ export const ObjectDetail = () => {
       } else {
         payload.id = 0;
         response = await fetch(
-          "http://app-lts.azurewebsites.net/api/teslacar",
+          "https://app-lts.azurewebsites.net/api/teslacar",
           {
             method: "POST", // Use POST for create
             headers: { "Content-Type": "application/json" },
@@ -72,7 +72,7 @@ export const ObjectDetail = () => {
       }
 
       if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+        throw new Error(`HTTPS error! Status: ${response.status}`);
       }
     } catch (error) {
       console.error("Error submitting form:", error);

@@ -8,10 +8,10 @@ const TeslaCars = () => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        "http://app-lts.azurewebsites.net/api/teslacar"
+        "https://app-lts.azurewebsites.net/api/teslacar"
       );
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`HTTPS error! status: ${response.status}`);
       }
       const data = await response.json();
       setTeslaCars(data);

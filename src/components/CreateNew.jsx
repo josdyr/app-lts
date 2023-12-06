@@ -18,7 +18,7 @@ export const CreateNew = () => {
     try {
       let response = null;
       payload.id = 0;
-      response = await fetch("http://app-lts.azurewebsites.net/api/teslacar", {
+      response = await fetch("https://app-lts.azurewebsites.net/api/teslacar", {
         method: "POST", // Use POST for create
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -26,7 +26,7 @@ export const CreateNew = () => {
       console.log("Create");
 
       if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+        throw new Error(`HTTPS error! Status: ${response.status}`);
       }
     } catch (error) {
       console.error("Error submitting form:", error);
