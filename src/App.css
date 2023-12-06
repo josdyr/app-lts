@@ -5,6 +5,10 @@
   text-align: center;
 } */
 
+.appContainer {
+  padding: 20px;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

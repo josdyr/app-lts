@@ -44,7 +44,7 @@ const TeslaCars = () => {
   };
 
   return (
-    <div>
+    <div className="appContainer">
       <table className="table table-hover">
         <thead>
           <tr>
