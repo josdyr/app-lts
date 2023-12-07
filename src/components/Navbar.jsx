@@ -5,9 +5,10 @@ export const Navbar = () => {
     <div>
       <nav>
         <NavLink to={"/"}>Home</NavLink>
-        <NavLink to={"/about"}>About</NavLink>
         <NavLink to={"/tesla-cars"}>Tesla Cars</NavLink>
         <NavLink to={"/tesla-cars/create-new"}>Create New</NavLink>
+        <NavLink to={"/login"}>Log In</NavLink>
+        <NavLink to={"/logout"}>Log Out</NavLink>
       </nav>
     </div>
   );
