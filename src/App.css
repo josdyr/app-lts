@@ -9,12 +9,6 @@
   margin: 15px;
 }
 
-/* all table elements */
-table {
-  border: 5px solid #dddddd55;
-  background-color: red;
-}
-
 .logo {
   height: 6em;
   padding: 1.5em;
