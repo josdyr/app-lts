@@ -72,6 +72,8 @@ export const ObjectDetail = () => {
       }
 
       if (!response.ok) {
+        // const errorData = await response.json();
+        alert(`Error: ${errorData.message}`);
         throw new Error(`HTTPS error! Status: ${response.status}`);
       }
     } catch (error) {
