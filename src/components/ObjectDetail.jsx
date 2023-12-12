@@ -3,9 +3,10 @@ import { useParams } from "react-router-dom";
 
 export const ObjectDetail = () => {
   const params = useParams();
-
   const [teslaCar, setTeslaCar] = useState({});
+  const [cityCode, setCityCode] = useState({});
   const [norwegianCities, setNorwegianCities] = useState({});
+  const [mergedCityWithCode, setMergedCityWithCode] = useState({});
 
   const fetchData = async () => {
     try {
@@ -22,15 +23,54 @@ export const ObjectDetail = () => {
     }
   };
 
-  console.log(teslaCar);
-
   useEffect(() => {
     fetchData();
+    fetchCityCode();
     fetchNorwegianCities();
   }, []);
 
+  useEffect(() => {
+    if (
+      Object.keys(cityCode).length > 0 &&
+      Object.keys(norwegianCities).length > 0
+    ) {
+      mergeCityWithCode(cityCode, norwegianCities);
+    }
+  }, [cityCode, norwegianCities]);
+
   const handleChange = (e) => {
     setTeslaCar({ ...teslaCar, [e.target.name]: e.target.value });
+  };
+
+  function mergeCityWithCode(cityCode, norwegianCities) {
+    const cityCodeArray = Object.values(cityCode);
+    const norwegianCitiesArray = Object.values(norwegianCities);
+
+    const mergedArray = norwegianCitiesArray.map((item) => {
+      const cityCodeItem = cityCodeArray.find(
+        (cityCodeItem) => cityCodeItem.city === item.label
+      );
+      return { ...item, cityCode: cityCodeItem?.code };
+    });
+
+    debugger;
+
+    setMergedCityWithCode(mergedArray);
+  }
+
+  const fetchCityCode = async () => {
+    try {
+      const response = await fetch(
+        "https://app-lts.azurewebsites.net/api/citycode"
+      );
+      if (!response.ok) {
+        throw new Error(`HTTPS error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setCityCode(data);
+    } catch (error) {
+      console.error("error fetching data: ", error);
+    }
   };
 
   function processData(data) {
@@ -575,9 +615,9 @@ export const ObjectDetail = () => {
             onChange={handleChange}
             required
           >
-            {Object.values(norwegianCities).map((item) => (
+            {Object.values(mergedCityWithCode).map((item) => (
               <option key={item.label} value={item.label}>
-                {item.label}
+                {item.label} - {item.cityCode}
               </option>
             ))}
           </select>
