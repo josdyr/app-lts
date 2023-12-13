@@ -4,7 +4,12 @@ import jsonQuery from "../../public/query.json";
 
 export const ObjectDetail = () => {
   const params = useParams();
-  const [teslaCar, setTeslaCar] = useState({});
+  const [teslaCar, setTeslaCar] = useState({
+    id: "",
+    model: "",
+    location: "",
+    serialNumber: "",
+  });
   const [cityCode, setCityCode] = useState({});
   const [norwegianCities, setNorwegianCities] = useState({});
   const [mergedCityWithCode, setMergedCityWithCode] = useState({});
@@ -178,7 +183,6 @@ export const ObjectDetail = () => {
           <input
             type="number"
             name="id"
-            // defaultValue={teslaCar.id}
             value={teslaCar.id}
             className="form-control"
             onChange={handleChange}
@@ -191,7 +195,6 @@ export const ObjectDetail = () => {
           <select
             type="text"
             name="model"
-            // defaultValue={teslaCar.model}
             value={teslaCar.model}
             className="form-control"
             onChange={handleChange}
@@ -221,7 +224,6 @@ export const ObjectDetail = () => {
           <select
             type="text"
             name="location"
-            // defaultValue={teslaCar.location}
             value={teslaCar.location}
             className="form-select"
             onChange={handleChange}
@@ -241,7 +243,6 @@ export const ObjectDetail = () => {
           <input
             type="text"
             name="serialNumber"
-            // defaultValue={teslaCar.serialNumber}
             value={teslaCar.serialNumber}
             className="form-control"
             onChange={handleChange}
