@@ -187,27 +187,30 @@ export const ObjectDetail = () => {
         </div>
         <div className="mb-3">
           <label className="form-label">Model:</label>
-          <input
+          <select
             type="text"
             name="model"
             defaultValue={teslaCar.model}
             className="form-control"
             onChange={handleChange}
             required
-          />
-          <div className="valid-feedback"></div>
-          <div className="invalid-feedback">Please fill out this field.</div>
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Serial Number:</label>
-          <input
-            type="text"
-            name="serialNumber"
-            defaultValue={teslaCar.serialNumber}
-            className="form-control"
-            onChange={handleChange}
-            required
-          />
+          >
+            <option key={"S"} value="Model S">
+              Model S
+            </option>
+            <option key={"3"} value="Model 3">
+              Model 3
+            </option>
+            <option key={"X"} value="Model X">
+              Model X
+            </option>
+            <option key={"Y"} value="Model Y">
+              Model Y
+            </option>
+            <option key={"C"} value="Cyber Truck">
+              Cyber Truck
+            </option>
+          </select>
           <div className="valid-feedback"></div>
           <div className="invalid-feedback">Please fill out this field.</div>
         </div>
@@ -221,6 +224,9 @@ export const ObjectDetail = () => {
             onChange={handleChange}
             required
           >
+            <option key={"default"} value="select">
+              {teslaCar.location}
+            </option>
             {Object.values(mergedCityWithCode).map((item) => (
               <option key={item.city} value={item.city}>
                 {item.city} - {item.code}
@@ -229,6 +235,18 @@ export const ObjectDetail = () => {
           </select>
           <div className="valid-feedback"></div>
           <div className="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Serial Number:</label>
+          <input
+            type="text"
+            name="serialNumber"
+            defaultValue={teslaCar.serialNumber}
+            className="form-control"
+            onChange={handleChange}
+            required
+            readOnly
+          />
         </div>
         <button type="submit" className="btn btn-primary">
           Submit
