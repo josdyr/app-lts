@@ -178,7 +178,8 @@ export const ObjectDetail = () => {
           <input
             type="number"
             name="id"
-            defaultValue={teslaCar.id}
+            // defaultValue={teslaCar.id}
+            value={teslaCar.id}
             className="form-control"
             onChange={handleChange}
           />
@@ -190,7 +191,8 @@ export const ObjectDetail = () => {
           <select
             type="text"
             name="model"
-            defaultValue={teslaCar.model}
+            // defaultValue={teslaCar.model}
+            value={teslaCar.model}
             className="form-control"
             onChange={handleChange}
             required
@@ -219,14 +221,12 @@ export const ObjectDetail = () => {
           <select
             type="text"
             name="location"
-            defaultValue={teslaCar.location}
+            // defaultValue={teslaCar.location}
+            value={teslaCar.location}
             className="form-select"
             onChange={handleChange}
             required
           >
-            <option key={"default"} value="select">
-              {teslaCar.location}
-            </option>
             {Object.values(mergedCityWithCode).map((item) => (
               <option key={item.city} value={item.city}>
                 {item.city} - {item.code}
@@ -241,7 +241,8 @@ export const ObjectDetail = () => {
           <input
             type="text"
             name="serialNumber"
-            defaultValue={teslaCar.serialNumber}
+            // defaultValue={teslaCar.serialNumber}
+            value={teslaCar.serialNumber}
             className="form-control"
             onChange={handleChange}
             required
