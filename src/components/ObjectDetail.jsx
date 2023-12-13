@@ -43,18 +43,10 @@ export const ObjectDetail = () => {
   };
 
   function mergeCityWithCode(cityCode, norwegianCities) {
-    const cityCodeArray = Object.values(cityCode);
-    const norwegianCitiesArray = Object.values(norwegianCities);
-
-    const mergedArray = norwegianCitiesArray.map((item) => {
-      const cityCodeItem = cityCodeArray.find(
-        (cityCodeItem) => cityCodeItem.city === item.label
-      );
-      return { ...item, cityCode: cityCodeItem?.code };
+    const mergedArray = cityCode.map((code) => {
+      norwegianCities.find((city) => city.label === code.city);
+      return { ...code };
     });
-
-    debugger;
-
     setMergedCityWithCode(mergedArray);
   }
 
@@ -616,8 +608,8 @@ export const ObjectDetail = () => {
             required
           >
             {Object.values(mergedCityWithCode).map((item) => (
-              <option key={item.label} value={item.label}>
-                {item.label} - {item.cityCode}
+              <option key={item.city} value={item.city}>
+                {item.city} - {item.code}
               </option>
             ))}
           </select>
