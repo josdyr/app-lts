@@ -13,6 +13,8 @@ export const ObjectDetail = () => {
   const [cityCode, setCityCode] = useState({});
   const [norwegianCities, setNorwegianCities] = useState({});
   const [mergedCityWithCode, setMergedCityWithCode] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [submitState, setSubmitState] = useState("Submit");
 
   const fetchData = async () => {
     try {
@@ -119,6 +121,11 @@ export const ObjectDetail = () => {
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent the default form submission
 
+    setIsLoading(true);
+    setSubmitState("Loading");
+    document.querySelector(".btn-primary").classList.add("btn-secondary");
+    document.querySelector(".btn-primary").classList.remove("btn-primary");
+
     const payload = { ...teslaCar };
 
     try {
@@ -173,6 +180,22 @@ export const ObjectDetail = () => {
     } catch (error) {
       console.error("Error submitting form:", error);
     }
+
+    setTimeout(function () {
+      setIsLoading(false);
+      setSubmitState("Created");
+      document.querySelector(".btn-secondary").classList.add("btn-success");
+      document
+        .querySelector(".btn-secondary")
+        .classList.remove("btn-secondary");
+    }, 500);
+
+    setTimeout(function () {
+      setIsLoading(false);
+      setSubmitState("Submit");
+      document.querySelector(".btn-success").classList.add("btn-primary");
+      document.querySelector(".btn-success").classList.remove("btn-success");
+    }, 2000);
   };
 
   return (
@@ -196,7 +219,7 @@ export const ObjectDetail = () => {
             type="text"
             name="model"
             value={teslaCar.model}
-            className="form-control"
+            className="form-select"
             onChange={handleChange}
             required
           >
@@ -250,8 +273,8 @@ export const ObjectDetail = () => {
             readOnly
           />
         </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
+        <button type="submit" className="btn btn-primary" disabled={isLoading}>
+          {submitState}
         </button>
       </form>
     </div>
