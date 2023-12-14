@@ -276,6 +276,7 @@ export const ObjectDetail = () => {
         <button type="submit" className="btn btn-primary" disabled={isLoading}>
           {submitState}
         </button>
+        <TeslaComment />
       </form>
     </div>
   );
