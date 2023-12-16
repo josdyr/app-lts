@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 
 const TeslaCars = () => {
   const [teslaCars, setTeslaCars] = useState([]);
+  const localURL = "http://localhost:5052/api/teslacar";
+  const azureURL = "https://app-lts.azurewebsites.net/api/teslacar";
 
   const fetchData = async () => {
     try {
-      const response = await fetch(
-        "https://app-lts.azurewebsites.net/api/teslacar"
-      );
+      const response = await fetch(azureURL);
       if (!response.ok) {
         throw new Error(`HTTPS error! status: ${response.status}`);
       }
