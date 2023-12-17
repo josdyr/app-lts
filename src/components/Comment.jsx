@@ -8,7 +8,7 @@ const Comment = () => {
   const azureURL = "https://app-lts.azurewebsites.net/api/comment";
   const fetchData = async () => {
     try {
-      const response = await fetch(localURL);
+      const response = await fetch(azureURL);
       if (!response.ok) {
         throw new Error(`HTTPS error! status: ${response.status}`);
       }
