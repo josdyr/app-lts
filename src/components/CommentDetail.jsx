@@ -98,7 +98,7 @@ export const CommentDetail = () => {
 
     setTimeout(function () {
       setIsLoading(false);
-      setSubmitState("Created");
+      setSubmitState("Submitted");
       document.querySelector(".btn-secondary").classList.add("btn-success");
       document
         .querySelector(".btn-secondary")
