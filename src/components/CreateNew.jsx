@@ -138,7 +138,7 @@ export const CreateNew = () => {
           <select
             type="text"
             name="model"
-            className="form-control"
+            className="form-select"
             onChange={handleChange}
             required
           >
