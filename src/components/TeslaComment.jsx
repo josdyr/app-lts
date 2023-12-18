@@ -27,21 +27,40 @@ const Comment = () => {
     console.log("Hello " + index);
   }
   const renderTable = () => {
-    return comment.map((item, index) => {
-      if (params.id == item.carId) {
-        return (
-          <tr key={index} onClick={() => printHello(item.id)}>
-            <td>
-              <Link to={`/comment/${item.id}`}>{item.id}</Link>
-            </td>
-            <td>{item.carId}</td>
-            <td>{item.commentDescription}</td>
-            <td>{item.user}</td>
-          </tr>
-        );
-      }
-    });
+    const filteredComments = comment.filter((item) => params.id == item.carId);
+
+    const tableRows = filteredComments.map((item, index) => (
+      <tr key={index}>
+        <td>
+          <Link to={`/comment/${item.id}`}>{item.id}</Link>
+        </td>
+        <td>{item.carId}</td>
+        <td>{item.commentDescription}</td>
+        <td>{item.user}</td>
+      </tr>
+    ));
+
+    // Add a new empty row at the end
+    tableRows.push(
+      <tr key={"newRow"}>
+        <td>
+          <input type="text" />
+        </td>
+        <td>
+          <input type="text" />
+        </td>
+        <td>
+          <input type="text" />
+        </td>
+        <td>
+          <input type="text" />
+        </td>
+      </tr>
+    );
+
+    return tableRows;
   };
+
   return (
     <div className="appContainer">
       <table className="table table-hover">

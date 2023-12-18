@@ -4,13 +4,11 @@ import { Home } from "./components/Home";
 import TeslaCars from "./components/TeslaCars";
 import CityCodes from "./components/CityCodes";
 import Comment from "./components/Comment";
+import { CommentDetail } from "./components/CommentDetail";
 import { Navbar } from "./components/Navbar";
 import { NoMatch } from "./components/NoMatch";
 import { ObjectDetail } from "./components/ObjectDetail";
-import { Create } from "./components/Create";
 import { CreateNew } from "./components/CreateNew";
-import { LogIn } from "./components/LogIn";
-import { LogOut } from "./components/LogOut";
 
 const App = () => {
   return (
@@ -23,9 +21,7 @@ const App = () => {
         <Route path="tesla-cars/create-new" element={<CreateNew />} />
         <Route path="cityitems" element={<CityCodes />} />
         <Route path="comment" element={<Comment />} />
-        <Route path="/login" element={<LogIn />} />
-        <Route path="/logout" element={<LogOut />} />
-        <Route path="create" element={<Create />} />
+        <Route path="comment/:id" element={<CommentDetail />} />
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </>
