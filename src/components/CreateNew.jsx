@@ -8,6 +8,7 @@ export const CreateNew = () => {
   const [cityCode, setCityCode] = useState({});
   const [norwegianCities, setNorwegianCities] = useState({});
   const [mergedCityWithCode, setMergedCityWithCode] = useState({});
+  const [wasValidated, setWasValidated] = useState(false);
 
   useEffect(() => {
     fetchCityCode();
@@ -128,11 +129,16 @@ export const CreateNew = () => {
     } catch (error) {
       console.error("Error submitting form:", error);
     }
+    setWasValidated(true);
   };
 
   return (
     <div className="appContainer">
-      <form onSubmit={handleSubmit} className="was-validated" noValidate>
+      <form
+        onSubmit={handleSubmit}
+        className={wasValidated ? "was-validated" : ""}
+        noValidate
+      >
         <div className="mb-3">
           <label className="form-label">Model:</label>
           <select
@@ -189,7 +195,7 @@ export const CreateNew = () => {
             className="form-control"
             onChange={handleChange}
             required
-            readOnly
+            // readOnly
           />
         </div>
         <button type="submit" className="btn btn-primary">
