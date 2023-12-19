@@ -10,13 +10,8 @@ import { NoMatch } from "./components/NoMatch";
 import { ObjectDetail } from "./components/ObjectDetail";
 import { CreateNew } from "./components/CreateNew";
 import { CreateNewComment } from "./components/CreateNewComment";
-import { WebPubSubClient } from "@azure/web-pubsub-client";
-import { useEffect } from "react";
-import { useWebSocket } from "./hooks/useWebSocket";
 
 const App = () => {
-  useWebSocket();
-
   return (
     <>
       <Navbar />
