@@ -8,6 +8,7 @@ const Comment = () => {
   const [comment, setComment] = useState([]);
   const localURL = "http://localhost:5052/api/comment";
   const azureURL = "https://app-lts.azurewebsites.net/api/comment";
+
   const fetchData = async () => {
     try {
       const response = await fetch(azureURL);
@@ -20,12 +21,15 @@ const Comment = () => {
       console.error("error fetching data: ", error);
     }
   };
+
   useEffect(() => {
     fetchData();
   }, []);
+
   function printHello(index) {
     console.log("Hello " + index);
   }
+
   const renderTable = () => {
     const filteredComments = comment.filter((item) => params.id == item.carId);
 
@@ -44,10 +48,10 @@ const Comment = () => {
     tableRows.push(
       <tr key={"newRow"}>
         <td>
-          <input type="text" />
+          <input type="number" />
         </td>
         <td>
-          <input type="text" />
+          <input type="number" />
         </td>
         <td>
           <input type="text" />
