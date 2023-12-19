@@ -106,37 +106,37 @@ export const CreateNewComment = () => {
     }
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault(); // Prevent the default form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent the default form submission
 
-  //   const payload = { ...comment };
+    const payload = { ...comment };
 
-  //   try {
-  //     let response = null;
+    try {
+      let response = null;
 
-  //     payload.id = 0;
-  //     response = await fetch("https://app-lts.azurewebsites.net/api/comment", {
-  //       method: "POST", // Use POST for create
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(payload),
-  //     });
-  //     if (!response.ok) {
-  //       throw new Error(`HTTPS error! Status: ${response.status}`);
-  //     } else {
-  //       console.log("Create");
-  //     }
+      payload.id = 0;
+      response = await fetch("https://app-lts.azurewebsites.net/api/comment", {
+        method: "POST", // Use POST for create
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!response.ok) {
+        throw new Error(`HTTPS error! Status: ${response.status}`);
+      } else {
+        console.log("Create");
+      }
 
-  //     if (!response.ok) {
-  //       // const errorData = await response.json();
-  //       alert(
-  //         `Serial number is not valid. Correct format could be: TC-00001-RG`
-  //       );
-  //       throw new Error(`HTTPS error! Status: ${response.status}`);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error submitting form:", error);
-  //   }
-  // };
+      if (!response.ok) {
+        // const errorData = await response.json();
+        alert(
+          `Serial number is not valid. Correct format could be: TC-00001-RG`
+        );
+        throw new Error(`HTTPS error! Status: ${response.status}`);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
+  };
 
   return (
     <div className="appContainer">
