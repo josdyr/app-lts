@@ -9,6 +9,7 @@ export const Navbar = () => {
         <NavLink to={"/tesla-cars/create-new"}>Create New</NavLink>
         <NavLink to={"/cityitems"}>City Codes</NavLink>
         <NavLink to={"/comment"}>Comment</NavLink>
+        <NavLink to={"/comment/create-new-comment"}>Create New Comment</NavLink>
       </nav>
     </div>
   );

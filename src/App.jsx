@@ -9,6 +9,7 @@ import { Navbar } from "./components/Navbar";
 import { NoMatch } from "./components/NoMatch";
 import { ObjectDetail } from "./components/ObjectDetail";
 import { CreateNew } from "./components/CreateNew";
+import { CreateNewComment } from "./components/CreateNewComment";
 
 const App = () => {
   return (
@@ -22,6 +23,10 @@ const App = () => {
         <Route path="cityitems" element={<CityCodes />} />
         <Route path="comment" element={<Comment />} />
         <Route path="comment/:id" element={<CommentDetail />} />
+        <Route
+          path="comment/create-new-comment"
+          element={<CreateNewComment />}
+        />
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </>

@@ -44,23 +44,23 @@ const Comment = () => {
       </tr>
     ));
 
-    // Add a new empty row at the end
-    tableRows.push(
-      <tr key={"newRow"}>
-        <td>
-          <input type="number" />
-        </td>
-        <td>
-          <input type="number" />
-        </td>
-        <td>
-          <input type="text" />
-        </td>
-        <td>
-          <input type="text" />
-        </td>
-      </tr>
-    );
+    // // Add a new empty row at the end
+    // tableRows.push(
+    //   <tr key={"newRow"}>
+    //     <td>
+    //       <input type="number" />
+    //     </td>
+    //     <td>
+    //       <input type="number" />
+    //     </td>
+    //     <td>
+    //       <input type="text" />
+    //     </td>
+    //     <td>
+    //       <input type="text" />
+    //     </td>
+    //   </tr>
+    // );
 
     return tableRows;
   };
