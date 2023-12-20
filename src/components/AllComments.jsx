@@ -3,7 +3,20 @@ import { Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { WebPubSubClient } from "@azure/web-pubsub-client";
 
-const Comment = () => {
+const AllComments = () => {
+  const [allComments, setAllComments] = useState([]);
+  const localURL = "http://localhost:5052/api/comment";
+  const azureURL = "https://app-lts.azurewebsites.net/api/comment";
+
+  function toLowerCamelCase(obj) {
+    let newObj = {};
+    for (let key in obj) {
+      let newKey = key.charAt(0).toLowerCase() + key.slice(1);
+      newObj[newKey] = obj[key];
+    }
+    return newObj;
+  }
+
   useEffect(() => {
     // Instantiates the client object
     const client = new WebPubSubClient(
@@ -16,7 +29,12 @@ const Comment = () => {
 
       client.on("server-message", (e) => {
         console.log(`Received message: ${e.message.data}`);
-        // add e.message.data to table
+        let deserializedData = JSON.parse(e.message.data);
+        let camelCaseJson = toLowerCamelCase(deserializedData);
+        // setAllComments once and only once
+        setAllComments((prev) => {
+          return [...prev, camelCaseJson];
+        });
       });
 
       client.on("connected", (e) => {
@@ -29,10 +47,6 @@ const Comment = () => {
     })();
   }, []);
 
-  const [comment, setComment] = useState([]);
-  const localURL = "http://localhost:5052/api/comment";
-  const azureURL = "https://app-lts.azurewebsites.net/api/comment";
-
   const fetchData = async () => {
     try {
       const response = await fetch(azureURL);
@@ -40,7 +54,7 @@ const Comment = () => {
         throw new Error(`HTTPS error! status: ${response.status}`);
       }
       const data = await response.json();
-      setComment(data);
+      setAllComments(data);
     } catch (error) {
       console.error("error fetching data: ", error);
     }
@@ -51,7 +65,7 @@ const Comment = () => {
   }, []);
 
   const renderTable = () => {
-    return comment.map((item, index) => {
+    return allComments.map((item, index) => {
       return (
         <tr key={index}>
           <td>
@@ -83,4 +97,4 @@ const Comment = () => {
   );
 };
 
-export default Comment;
+export default AllComments;

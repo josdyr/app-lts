@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { Home } from "./components/Home";
 import TeslaCars from "./components/TeslaCars";
 import CityCodes from "./components/CityCodes";
-import Comment from "./components/Comment";
+import AllComments from "./components/AllComments";
 import { CommentDetail } from "./components/CommentDetail";
 import { Navbar } from "./components/Navbar";
 import { NoMatch } from "./components/NoMatch";
@@ -21,7 +21,7 @@ const App = () => {
         <Route path="tesla-cars/:id" element={<ObjectDetail />} />
         <Route path="tesla-cars/create-new" element={<CreateNew />} />
         <Route path="cityitems" element={<CityCodes />} />
-        <Route path="comment" element={<Comment />} />
+        <Route path="comment" element={<AllComments />} />
         <Route path="comment/:id" element={<CommentDetail />} />
         <Route
           path="comment/create-new-comment"
