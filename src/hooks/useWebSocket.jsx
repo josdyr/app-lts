@@ -5,7 +5,7 @@ export const useWebSocket = () => {
   useEffect(() => {
     // Instantiates the client object
     const client = new WebPubSubClient(
-      "wss://wps-communication.webpubsub.azure.com/client/hubs/Hub?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ3c3M6Ly93cHMtY29tbXVuaWNhdGlvbi53ZWJwdWJzdWIuYXp1cmUuY29tL2NsaWVudC9odWJzL0h1YiIsImlhdCI6MTcwMjk5NTA2NiwiZXhwIjoxNzAzMDgxNDY2fQ.gc_aP-2f4N9qXXySvR8eDsjbCs5rd1yroCpfHStP7j8"
+      "wss://wps-communication.webpubsub.azure.com/client/hubs/Hub?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ3c3M6Ly93cHMtY29tbXVuaWNhdGlvbi53ZWJwdWJzdWIuYXp1cmUuY29tL2NsaWVudC9odWJzL0h1YiIsImlhdCI6MTcwMzA4MTU5MywiZXhwIjoxNzAzMTY3OTkzfQ.m7xzW8ImuEPV5IfmYu0eo6NjDsEO-FADEnfkukWUw7Y"
     );
 
     (async () => {
