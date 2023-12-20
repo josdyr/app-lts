@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import jsonQuery from "../../public/query.json";
 import TeslaComment from "./TeslaComment";
-// import { WebPubSubServiceClient } from "@azure/web-pubsub";
 
 export const ObjectDetail = () => {
   const params = useParams();
@@ -169,14 +168,6 @@ export const ObjectDetail = () => {
           throw new Error(`HTTPS error! Status: ${response.status}`);
         } else {
           console.log("Create");
-          const hub = "pubsub";
-          // let service = new WebPubSubServiceClient(
-          //   process.env.WebPubSubConnectionString,
-          //   hub
-          // );
-
-          // by default it uses `application/json`, specify contentType as `text/plain` if you want plain-text
-          // service.sendToAll(process.argv[2], { contentType: "text/plain" });
         }
       }
 
@@ -211,6 +202,19 @@ export const ObjectDetail = () => {
   return (
     <div className="appContainer">
       <form onSubmit={handleSubmit} className="was-validated" noValidate>
+        <div className="mb-3">
+          <label className="form-label">GUID:</label>
+          <input
+            type="string"
+            name="id"
+            value={teslaCar.teslaCarGuid}
+            className="form-control"
+            onChange={handleChange}
+            readOnly
+          />
+          <div className="valid-feedback"></div>
+          <div className="invalid-feedback">Please fill out this field.</div>
+        </div>
         <div className="mb-3">
           <label className="form-label">ID:</label>
           <input
